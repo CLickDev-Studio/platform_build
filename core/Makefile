@@ -2792,18 +2792,14 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 
 TARGET_PACKAGE := $(PRODUCT_OUT)/AospExtended-$(EXTENDED_VERSION)-$(TARGET_DEVICE)-$(EXTENDED_BUILD_DATE)-$(EXTENDED_BUILD_TYPE).zip
 
-.PHONY: otapackage bacon aex
+.PHONY: otapackage bacon cp
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
-bacon: aex
-aex: otapackage
+bacon: cp
+cp: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(TARGET_PACKAGE) > $(TARGET_PACKAGE).md5sum
 	@echo -e ${CL_RST} ""
-	@echo -e ${CL_RST} " ▄▄▄·       .▄▄ ·  ▄▄▄·▄▄▄ .▐▄• ▄ ▄▄▄▄▄▄▄▄ . ▐ ▄ ·▄▄▄▄  ▄▄▄ .·▄▄▄▄  "
-	@echo -e ${CL_RST} "▐█ ▀█ ▪     ▐█ ▀. ▐█ ▄█▀▄.▀· █▌█▌▪•██  ▀▄.▀·•█▌▐███▪ ██ ▀▄.▀·██▪ ██ "
-	@echo -e ${CL_RST} "▄█▀▀█  ▄█▀▄ ▄▀▀▀█▄ ██▀·▐▀▀▪▄ ·██·  ▐█.▪▐▀▀▪▄▐█▐▐▌▐█· ▐█▌▐▀▀▪▄▐█· ▐█▌"
-	@echo -e ${CL_RST} "▐█ ▪▐▌▐█▌.▐▌▐█▄▪▐█▐█▪·•▐█▄▄▌▪▐█·█▌ ▐█▌·▐█▄▄▌██▐█▌██. ██ ▐█▄▄▌██. ██ "
-	@echo -e ${CL_RST} " ▀  ▀  ▀█▄▀▪ ▀▀▀▀ .▀    ▀▀▀ •▀▀ ▀▀ ▀▀▀  ▀▀▀ ▀▀ █▪▀▀▀▀▀•  ▀▀▀ ▀▀▀▀▀• "
+	@echo -e ${CL_RST} "ClickProject Oreo"
 	@echo -e ${CL_RST} "" ${CL_RST}
 	@echo -e ${CL_BLD}${CL_RED}"===============================-Package complete-==============================="${CL_RED}
 	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW} $(TARGET_PACKAGE)${CL_RST}
